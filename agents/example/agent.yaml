@@ -1,0 +1,35 @@
+name: example_agent
+model: openai/gpt-4o-mini
+system_prompt: prompts/system.md
+tools:
+  - current_time
+  - final_answer
+  - web_search
+  - schedule_task
+  - filesystem
+allowed_tool_risk_levels:
+  - safe
+  - read_only
+  - write
+skills:
+  - concise_operator
+  - web_research
+guardrails:
+  - default
+max_iterations: 8
+temperature: 0.2
+metadata:
+  owner: local
+channels:
+  - telegram
+  - console
+cache: local_json
+memory: local_jsonl
+memory_top_k: 5
+memory_max_chars: 2000
+session: local_json
+session_history_limit: 10
+context_max_chars: 24000
+context_memory_max_chars: 6000
+context_session_max_chars: 8000
+scheduler: local_json

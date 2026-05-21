@@ -1,0 +1,11 @@
+services:
+  harness-agent:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./agents:/app/agents
+      - ./agent_workspace:/app/agent_workspace
+      - ./runs:/app/runs
+      - ./.env:/app/.env:ro
+    command: ["uv", "run", "harness-agent", "serve", "--agent", "agents/example/agent.yaml"]
